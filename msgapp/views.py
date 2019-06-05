@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from datetime import datetime
+from django.http import HttpResponse
 
 
 def msgproc(request):
@@ -26,3 +27,10 @@ def msgproc(request):
                     if cnt >= 10:
                         break
     return render(request, "MsgSingleWeb.html", {"data": datalist})
+
+def homeproc(request):
+    response = HttpResponse()
+    response.write("<h1>这是首页，具体功能请访问<a href='./msggate'>这里</a></h1>")
+    response.write("<h1>这是第二行</h1>")
+    return response
+    #return HttpResponse("<h1>这是首页，具体功能请访问<a href='./msggate'>这里</a></h1>")
